@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const zaloUrl = "https://zalo.me/0947181857";
-const fanpageUrl = "https://www.facebook.com/freyatarot";
 
 const packages = {
   tarot: [["01 cau hoi", "50k"], ["03 cau hoi", "80k"], ["Bang cau hoi", "130k"], ["01 tieng", "200k"]],
@@ -73,7 +72,7 @@ export default function Home() {
     </section>
 
     <section className="booking-section" id="quy-trinh"><div className="booking-heading"><p className="eyebrow"><CalendarCheck size={15} /> Dat lich cung Freya</p><h2>Hen mot buoi xem, nhe nhang thoi.</h2><p>Chi can de lai loi nhan, Freya se phan hoi de cung ban chon khung gio va goi phu hop.</p></div><ol className="booking-steps"><li><span>1</span><div><h3>Chon goi xem</h3><p>Nhan tin de chia se dieu ban dang can hoi.</p></div></li><li><span>2</span><div><h3>Hen lich & chuyen khoan</h3><p>Freya xac nhan khung gio sau khi nhan thong tin.</p></div></li><li><span>3</span><div><h3>Gui ho ten & cau hoi</h3><p>Chuan bi khong gian yen tinh cho buoi hen cua minh.</p></div></li><li><span>4</span><div><h3>Bat dau soi chieu</h3><p>Freya ghi am, chup bai va dong hanh cung ban.</p></div></li></ol><div className="booking-cta"><p>San sang bat dau?</p><Button asChild size="lg" className="primary-button"><a href={zaloUrl} target="_blank" rel="noreferrer"><MessageCircle /> Nhan tin qua Zalo</a></Button></div></section>
-    <footer><div className="footer-brand"><MoonStar size={20} /> FREYA TAROT</div><p>Mot goc nho de ban tro ve voi nhung cau hoi cua minh.</p><div className="footer-links"><a href={fanpageUrl} target="_blank" rel="noreferrer">Fanpage</a><a href="https://www.tiktok.com/@uyenvuong0111" target="_blank" rel="noreferrer">TikTok @uyenvuong0111</a><a href={zaloUrl} target="_blank" rel="noreferrer">Zalo 0947181857</a></div></footer>
+    <footer><div className="footer-brand"><MoonStar size={20} /> FREYA TAROT</div><p>Mot goc nho de ban tro ve voi nhung cau hoi cua minh.</p><div className="footer-links"><span>Fanpage: Freya Tarot</span><a href="https://www.tiktok.com/@uyenvuong0111" target="_blank" rel="noreferrer">TikTok @uyenvuong0111</a><a href={zaloUrl} target="_blank" rel="noreferrer">Zalo 0947181857</a></div></footer>
     <a className="mobile-cta" href={zaloUrl} target="_blank" rel="noreferrer"><MessageCircle /> Dat lich qua Zalo</a>
   </main>;
 }
