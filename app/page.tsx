@@ -1,78 +1,108 @@
 "use client";
 
-import { ArrowRight, CalendarCheck, Check, CircleDollarSign, Clock3, Heart, MessageCircle, MoonStar, Sparkles, Star } from "lucide-react";
+import { useEffect } from "react";
+import { ArrowDownRight, ArrowRight, CalendarDays, Check, Clock3, MessageCircle, MoonStar, Sparkles, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const zaloUrl = "https://zalo.me/0947181857";
 
-const packages = {
-  tarot: [["01 cau hoi", "50k"], ["03 cau hoi", "80k"], ["Bang cau hoi", "130k"], ["01 tieng", "200k"]],
-  iching: [["01 cau hoi", "59k"], ["03 cau hoi", "100k"], ["01 tieng", "219k"]],
-  astrology: [["Than so hoc", "300k"], ["Ban do sao", "450k"], ["Tien kiep Draconic", "650k"]],
-};
+const tarotPrices = [
+  ["1 câu hỏi", "50.000đ"], ["3 câu hỏi", "80.000đ"], ["Bảng câu hỏi", "130.000đ"], ["1 tiếng", "200.000đ"],
+];
+const ichingPrices = [["1 câu hỏi", "59.000đ"], ["3 câu hỏi", "100.000đ"], ["1 tiếng", "219.000đ"]];
+const astrologyPrices = [["Thần số học", "300.000đ"], ["Bản đồ sao", "450.000đ"], ["Tiền kiếp Draconic", "650.000đ"]];
 
-function PackageList({ items }: { items: string[][] }) {
-  return <div className="package-list">{items.map(([name, price]) => <div key={name}><span>{name}</span><strong>{price}</strong></div>)}</div>;
+function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  return <div data-reveal className={className} style={{ "--reveal-delay": `${delay}ms` } as React.CSSProperties}>{children}</div>;
+}
+
+function PriceRows({ prices }: { prices: string[][] }) {
+  return <div className="price-rows">{prices.map(([name, price]) => <div key={name}><span>{name}</span><strong>{price}</strong></div>)}</div>;
 }
 
 export default function Home() {
+  useEffect(() => {
+    const nodes = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: "0px 0px -48px" });
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, []);
+
   return <main>
-    <nav className="nav-shell" aria-label="Dieu huong chinh">
-      <a className="brand" href="#top"><MoonStar size={20} /> FREYA TAROT</a>
-      <div className="nav-links"><a href="#dich-vu">Dich vu</a><a href="#bang-gia">Bang gia</a><a href="#quy-trinh">Dat lich</a></div>
-      <Button asChild className="nav-cta"><a href={zaloUrl} target="_blank" rel="noreferrer">Nhan tin Zalo <ArrowRight /></a></Button>
+    <nav className="nav" aria-label="Điều hướng chính">
+      <a href="#đầu-trang" className="brand"><MoonStar size={19} /> FREYA TAROT</a>
+      <div className="nav-links"><a href="#dịch-vụ">Dịch vụ</a><a href="#bảng-giá">Bảng giá</a><a href="#đặt-lịch">Đặt lịch</a></div>
+      <a className="nav-message" href={zaloUrl} target="_blank" rel="noreferrer">Nhắn Zalo <ArrowRight size={15} /></a>
     </nav>
 
-    <section className="hero" id="top">
-      <div className="hero-stars" aria-hidden="true">* . * . * . *</div>
-      <div className="hero-copy">
-        <p className="eyebrow"><Sparkles size={15} /> Tarot & chiem tinh ca nhan</p>
-        <h1>Mot cuoc hen de ban lang nghe chinh minh.</h1>
-        <p className="hero-description">Freya dong hanh cung ban qua Tarot, Kinh Dich va ban do sao - bang mot cuoc tro chuyen rieng tu, cham va that.</p>
-        <div className="hero-actions"><Button asChild size="lg" className="primary-button"><a href="#quy-trinh"><CalendarCheck /> Dat lich xem</a></Button><Button asChild variant="outline" size="lg" className="secondary-button"><a href="#bang-gia">Xem bang gia</a></Button></div>
-        <div className="trust-row"><span><Star fill="currentColor" /> 6 nam dong hanh</span><span><Heart fill="currentColor" /> Online 1-1</span><span><Clock3 /> Co ghi am buoi xem</span></div>
+    <section className="hero" id="đầu-trang">
+      <div className="hero-grid" aria-hidden="true" />
+      <div className="hero-inner">
+        <Reveal className="hero-copy">
+          <p className="kicker"><Sparkles size={15} /> TAROT & CHIÊM TINH CÁ NHÂN</p>
+          <h1>Lắng nghe câu chuyện<br /><em>của chính mình.</em></h1>
+          <p className="hero-lead">Một khoảng dừng riêng tư để bạn nhìn rõ hơn những điều đang diễn ra, qua Tarot, Kinh Dịch và bản đồ sao.</p>
+          <div className="hero-actions"><Button asChild size="lg" className="gold-button"><a href="#đặt-lịch"><CalendarDays /> Đặt lịch xem</a></Button><a className="text-link" href="#bảng-giá">Xem bảng giá <ArrowDownRight size={18} /></a></div>
+          <div className="proof"><span><Star fill="currentColor" /> 6 năm đồng hành</span><span><Clock3 /> Online 1-1</span><span><Check /> Có ghi âm buổi xem</span></div>
+        </Reveal>
+        <Reveal className="hero-visual" delay={160}>
+          <div className="halo" aria-hidden="true" />
+          <div className="portrait"><img src="/freya-course.png" alt="Hình ảnh đại diện Freya Tarot" /></div>
+          <div className="visual-note note-top">CHỌN<br />SỰ RÕ RÀNG</div>
+          <div className="visual-note note-bottom">FREYA<br /><small>Tarot reader</small></div>
+          <span className="star star-a" aria-hidden="true">✦</span><span className="star star-b" aria-hidden="true">✧</span>
+        </Reveal>
       </div>
-      <div className="hero-art" aria-label="Anh minh hoa Freya Tarot">
-        <div className="sun-burst" /><div className="portrait-frame"><img src="/freya-course.png" alt="Chan dung dai dien Freya Tarot" /></div>
-        <div className="orbit orbit-one" aria-hidden="true">*</div><div className="orbit orbit-two" aria-hidden="true">C</div>
-        <div className="art-label"><span>FREYA</span><small>Tarot reader</small></div>
+      <div className="scroll-cue"><span /> CUỘN ĐỂ KHÁM PHÁ</div>
+    </section>
+
+    <section className="signature-line"><span>Tarot phương Tây</span><i>✦</i><span>Kinh Dịch phương Đông</span><i>✦</i><span>Thần số học</span><i>✦</i><span>Bản đồ sao</span><i>✦</i><span>Draconic</span></section>
+
+    <section className="section services" id="dịch-vụ">
+      <Reveal className="section-head"><p className="kicker"><Sparkles size={15} /> CÁCH FREYA ĐỒNG HÀNH</p><h2>Mỗi câu hỏi đều cần<br />một không gian riêng.</h2></Reveal>
+      <div className="service-list">
+        <Reveal delay={40}><article className="service-item"><span className="service-index">01</span><div><h3>Tarot phương Tây</h3><p>Soi chiếu chuyện tình cảm, công việc, lựa chọn hiện tại và những điều bạn đang cần gọi tên.</p></div><a href="#bảng-giá" aria-label="Xem giá Tarot"><ArrowRight /></a></article></Reveal>
+        <Reveal delay={130}><article className="service-item"><span className="service-index">02</span><div><h3>Kinh Dịch phương Đông</h3><p>Một góc nhìn điềm tĩnh để hiểu rõ tình huống, thời điểm và hướng đi phù hợp hơn.</p></div><a href="#bảng-giá" aria-label="Xem giá Kinh Dịch"><ArrowRight /></a></article></Reveal>
+        <Reveal delay={220}><article className="service-item"><span className="service-index">03</span><div><h3>Tử vi & chiêm tinh</h3><p>Thần số học, bản đồ sao và Draconic để đọc sâu hơn về hành trình riêng của bạn.</p></div><a href="#bảng-giá" aria-label="Xem giá chiêm tinh"><ArrowRight /></a></article></Reveal>
       </div>
     </section>
 
-    <section className="marquee"><span>Tarot phuong Tay</span><i>*</i><span>Kinh Dich phuong Dong</span><i>*</i><span>Ban do sao</span><i>*</i><span>Draconic</span><i>*</i><span>Chua lanh 1-1</span></section>
-
-    <section className="section intro-section" id="dich-vu">
-      <div className="section-heading"><p className="eyebrow"><Sparkles size={15} /> Chon cach minh dong hanh</p><h2>Moi cau hoi deu xung dang co mot khong gian rieng.</h2></div>
-      <div className="service-grid">
-        <article className="service-card tarot-card"><span className="card-number">01</span><MoonStar size={29} /><h3>Tarot phuong Tay</h3><p>Goi mo van de dang quan tam qua trai bai, buoi xem theo gio, hoac tong quan theo moc thoi gian.</p><a href="#bang-gia">Xem goi Tarot <ArrowRight size={16} /></a></article>
-        <article className="service-card iching-card"><span className="card-number">02</span><Sparkles size={29} /><h3>Kinh Dich</h3><p>Mot cach soi chieu theo phuong Dong de ban nhin ro tinh huong, lua chon va huong di phu hop.</p><a href="#bang-gia">Xem goi Kinh Dich <ArrowRight size={16} /></a></article>
-        <article className="service-card natal-card"><span className="card-number">03</span><Star size={29} /><h3>Tu vi & chiem tinh</h3><p>Than so hoc, ban do sao va goc nhin Draconic cho hanh trinh hieu minh sau hon.</p><a href="#draconic">Kham pha Draconic <ArrowRight size={16} /></a></article>
+    <section className="section pricing" id="bảng-giá">
+      <Reveal className="section-head price-head"><p className="kicker"><Sparkles size={15} /> BẢNG GIÁ DỊCH VỤ</p><h2>Chọn gói xem<br />phù hợp với bạn.</h2><p>Tất cả các buổi xem đều được hẹn lịch trước qua Zalo.</p></Reveal>
+      <div className="price-grid">
+        <Reveal delay={40}><article className="price-card"><p className="card-label">01 / TAROT</p><h3>Tarot phương Tây</h3><PriceRows prices={tarotPrices} /><p className="price-extra"><b>Tổng quan</b><br />1 tháng 80.000đ · 3 tháng 120.000đ<br />6 tháng 150.000đ · 1 năm 200.000đ</p><p className="price-extra"><b>Offline:</b> 350.000đ/người/60 phút</p></article></Reveal>
+        <Reveal delay={130}><article className="price-card featured"><p className="card-label">02 / KINH DỊCH</p><h3>Kinh Dịch<br />phương Đông</h3><PriceRows prices={ichingPrices} /><div className="price-card-mark">SOI CHIẾU<br />DỊU DÀNG</div></article></Reveal>
+        <Reveal delay={220}><article className="price-card"><p className="card-label">03 / CHIÊM TINH</p><h3>Hồ sơ trong đời</h3><PriceRows prices={astrologyPrices} /><p className="price-extra">Bao gồm file kết quả và cuộc gọi giải thích.</p></article></Reveal>
       </div>
     </section>
 
-    <section className="section pricing-section" id="bang-gia">
-      <div className="pricing-aside"><p className="eyebrow"><CircleDollarSign size={15} /> Dich vu & chi phi</p><h2>Bang gia ro rang, de ban chon dung dieu minh can.</h2><p>Ban co the nhan tin truc tiep de Freya tu van goi phu hop voi cau hoi cua ban.</p><Button asChild variant="outline" className="secondary-button"><a href={zaloUrl} target="_blank" rel="noreferrer"><MessageCircle /> Tu van qua Zalo</a></Button></div>
-      <Tabs defaultValue="tarot" className="price-tabs">
-        <TabsList className="price-tab-list"><TabsTrigger value="tarot">Tarot</TabsTrigger><TabsTrigger value="iching">Kinh Dich</TabsTrigger><TabsTrigger value="astrology">Chiem tinh</TabsTrigger></TabsList>
-        <TabsContent value="tarot" className="price-panel"><p className="panel-kicker">Tarot phuong Tay</p><h3>Chon mot cau hoi, hoac mot khoang thoi gian de soi chieu.</h3><PackageList items={packages.tarot} /><div className="panel-note"><strong>Tong quan:</strong> 1 thang 80k · 3 thang 120k · 6 thang 150k · 1 nam 200k</div><div className="panel-note"><strong>Offline:</strong> 350k/nguoi/60 phut. Phu thu quan xa tren 8km; giam gia tu 2 nguoi.</div></TabsContent>
-        <TabsContent value="iching" className="price-panel"><p className="panel-kicker">Kinh Dich phuong Dong</p><h3>Du dung mot cau hoi hay mot buoi hen dai hon, van co cho de ban cham lai.</h3><PackageList items={packages.iching} /><div className="panel-note"><strong>Hinh thuc:</strong> Online 1-1, hen lich truoc qua Zalo.</div></TabsContent>
-        <TabsContent value="astrology" className="price-panel"><p className="panel-kicker">Tu vi trong doi</p><h3>Doc lai nhung mau hinh lon trong cau chuyen va hanh trinh cua ban.</h3><PackageList items={packages.astrology} /><div className="panel-note"><strong>Bao gom:</strong> File ket qua va cuoc goi giai thich.</div></TabsContent>
-      </Tabs>
+    <section className="healing">
+      <Reveal className="healing-art"><img src="/freya-course.png" alt="Khóa học 7 ngày chữa lành" /><div className="healing-number">07</div></Reveal>
+      <Reveal className="healing-copy" delay={120}><p className="kicker"><Sparkles size={15} /> CHƯƠNG TRÌNH 1-1</p><h2>7 ngày chữa lành,<br />học lại về bản thân.</h2><p>Một hành trình chuyên sâu dành cho người muốn dừng lại, lắng nghe và kết nối với chính mình.</p><ul><li><Check /> 7 ngày liên tiếp, 60 phút mỗi buổi</li><li><Check /> Thần số học, bản đồ sao, Draconic, Kỳ Trăng</li><li><Check /> Online 1-1, chuẩn bị sổ ghi chép và thời gian yên tĩnh</li></ul><div className="healing-price"><strong>2.500.000đ</strong><span>/ 7 ngày chuyên sâu</span></div><Button asChild className="gold-button"><a href={zaloUrl} target="_blank" rel="noreferrer">Hẹn tư vấn khóa học <ArrowRight /></a></Button></Reveal>
     </section>
 
-    <section className="healing-section">
-      <div className="healing-image"><img src="/freya-course.png" alt="Thong tin khoa hoc 7 ngay chua lanh Freya Tarot" /></div>
-      <div className="healing-copy"><p className="eyebrow"><Heart size={15} /> Chuong trinh 1-1</p><h2>7 ngay chua lanh: khoa hoc ve ban than.</h2><p>Mot hanh trinh danh cho nguoi muon dung lai, soi chieu sau hon va ket noi voi chinh minh.</p><ul><li><Check /> 7 ngay lien tiep, 60 phut moi buoi</li><li><Check /> Soi chieu qua than so hoc, ban do sao, Draconic va Ky Trang</li><li><Check /> Online 1-1; can so ghi chep va thoi gian yen tinh</li></ul><div className="healing-bottom"><strong>2.500.000d</strong><span>/ 7 ngay chuyen sau</span></div><Button asChild className="primary-button"><a href={zaloUrl} target="_blank" rel="noreferrer">Hen tu van khoa hoc <ArrowRight /></a></Button></div>
+    <section className="section draconic">
+      <Reveal className="draconic-intro"><p className="kicker"><MoonStar size={15} /> SOI TIỀN KIẾP DRACONIC</p><h2>Điều gì vẫn đang<br />gọi tên bạn?</h2><p>Draconic là một góc nhìn để bạn nhận ra những khuynh hướng cảm xúc, bài học và khao khát sâu bên trong.</p></Reveal>
+      <div className="draconic-points">
+        <Reveal delay={40}><article><span>01</span><h3>Thói quen cũ</h3><p>Những hành vi, nỗi sợ hay tài năng bẩm sinh vẫn đi cùng bạn đến hiện tại.</p></article></Reveal>
+        <Reveal delay={140}><article><span>02</span><h3>Bài học dang dở</h3><p>Những vấn đề cảm xúc và mối quan hệ cần được nhìn lại một cách dịu dàng.</p></article></Reveal>
+        <Reveal delay={240}><article><span>03</span><h3>Khao khát cốt lõi</h3><p>Điều khiến bạn luôn bị thu hút bởi một lối sống, một vùng đất hay lý tưởng nhất định.</p></article></Reveal>
+      </div>
     </section>
 
-    <section className="section draconic-section" id="draconic">
-      <div className="draconic-heading"><p className="eyebrow"><MoonStar size={15} /> Dich vu moi 2026</p><h2>Soi tien kiep Draconic, nhin lai dieu van dang goi ten ban.</h2><p>Ban do sao Draconic mang den mot goc nhin ve nhung dau vet cam xuc va khuynh huong sau ben trong.</p></div>
-      <div className="draconic-items"><article><span>01</span><div><h3>Thoi quen cu</h3><p>Nhung hanh vi, noi so hoac tai nang bam sinh ma ban mang sang hien tai.</p></div></article><article><span>02</span><div><h3>Bai hoc dang do</h3><p>Nhung van de cam xuc va moi quan he chua kip duoc giai quyet.</p></div></article><article><span>03</span><div><h3>Khao khat cot loi</h3><p>Dieu khien ban luon bi thu hut boi mot loi song, vung dat hay ly tuong.</p></div></article></div>
+    <section className="booking" id="đặt-lịch">
+      <Reveal className="booking-copy"><p className="kicker"><CalendarDays size={15} /> ĐẶT LỊCH CÙNG FREYA</p><h2>Một buổi hẹn,<br />nhẹ nhàng thôi.</h2><p>Bạn chỉ cần để lại tin nhắn. Freya sẽ phản hồi để cùng bạn chọn gói xem và khung giờ phù hợp.</p><Button asChild className="gold-button"><a href={zaloUrl} target="_blank" rel="noreferrer"><MessageCircle /> Nhắn tin qua Zalo</a></Button></Reveal>
+      <Reveal className="booking-side" delay={160}><ol><li><span>1</span><div><b>Chọn gói xem</b><p>Chia sẻ điều bạn đang cần hỏi.</p></div></li><li><span>2</span><div><b>Hẹn lịch & chuyển khoản</b><p>Freya xác nhận khung giờ cho bạn.</p></div></li><li><span>3</span><div><b>Gửi họ tên & câu hỏi</b><p>Chuẩn bị không gian yên tĩnh.</p></div></li><li><span>4</span><div><b>Bắt đầu soi chiếu</b><p>Ghi âm và chụp bài sau buổi xem.</p></div></li></ol><div className="payment-preview"><img src="/freya-payment.png" alt="Thông tin thanh toán Freya Tarot" /><div><span>THANH TOÁN</span><b>Quét mã sau khi Freya xác nhận lịch</b></div></div></Reveal>
     </section>
 
-    <section className="booking-section" id="quy-trinh"><div className="booking-heading"><p className="eyebrow"><CalendarCheck size={15} /> Dat lich cung Freya</p><h2>Hen mot buoi xem, nhe nhang thoi.</h2><p>Chi can de lai loi nhan, Freya se phan hoi de cung ban chon khung gio va goi phu hop.</p></div><ol className="booking-steps"><li><span>1</span><div><h3>Chon goi xem</h3><p>Nhan tin de chia se dieu ban dang can hoi.</p></div></li><li><span>2</span><div><h3>Hen lich & chuyen khoan</h3><p>Freya xac nhan khung gio sau khi nhan thong tin.</p></div></li><li><span>3</span><div><h3>Gui ho ten & cau hoi</h3><p>Chuan bi khong gian yen tinh cho buoi hen cua minh.</p></div></li><li><span>4</span><div><h3>Bat dau soi chieu</h3><p>Freya ghi am, chup bai va dong hanh cung ban.</p></div></li></ol><div className="booking-cta"><p>San sang bat dau?</p><Button asChild size="lg" className="primary-button"><a href={zaloUrl} target="_blank" rel="noreferrer"><MessageCircle /> Nhan tin qua Zalo</a></Button></div></section>
-    <footer><div className="footer-brand"><MoonStar size={20} /> FREYA TAROT</div><p>Mot goc nho de ban tro ve voi nhung cau hoi cua minh.</p><div className="footer-links"><span>Fanpage: Freya Tarot</span><a href="https://www.tiktok.com/@uyenvuong0111" target="_blank" rel="noreferrer">TikTok @uyenvuong0111</a><a href={zaloUrl} target="_blank" rel="noreferrer">Zalo 0947181857</a></div></footer>
-    <a className="mobile-cta" href={zaloUrl} target="_blank" rel="noreferrer"><MessageCircle /> Dat lich qua Zalo</a>
+    <footer><div className="brand"><MoonStar size={19} /> FREYA TAROT</div><p>Tarot & chiêm tinh cá nhân</p><div><span>Fanpage: Freya Tarot</span><a href="https://www.tiktok.com/@uyenvuong0111" target="_blank" rel="noreferrer">TikTok @uyenvuong0111</a><a href={zaloUrl} target="_blank" rel="noreferrer">Zalo 0947181857</a></div></footer>
+    <a href={zaloUrl} target="_blank" rel="noreferrer" className="mobile-book"><MessageCircle size={18} /> Đặt lịch qua Zalo</a>
   </main>;
 }
