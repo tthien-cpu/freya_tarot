@@ -25,11 +25,11 @@ export default function ScrollCardAnimations() {
         // Trên điện thoại (các thẻ xếp dọc 1 cột), mỗi thẻ sẽ trượt nhẹ êm ái từ dưới lên
         // và sáng rõ dần khi người dùng cuộn đến đúng vị trí của thẻ đó.
         const mobileSelectors = [
-          ".service-col-1",
-          ".service-col-2",
           ".pricing-col-1",
           ".pricing-col-2",
           ".pricing-col-3",
+          ".service-col-1",
+          ".service-col-2",
           ".roadmap-step-1",
           ".roadmap-step-2",
           ".roadmap-step-3",

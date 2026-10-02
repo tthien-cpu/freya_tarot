@@ -90,11 +90,11 @@ export default function Home() {
             <a href="#dau-trang" className="nav-link">
               Phần I • Mở Đầu
             </a>
-            <a href="#dich-vu" className="nav-link">
-              Phần II • Dịch Vụ
-            </a>
             <a href="#bang-gia" className="nav-link">
-              Phần III • Bảng Giá
+              Phần II • Bảng Giá
+            </a>
+            <a href="#dich-vu" className="nav-link">
+              Phần III • Dịch Vụ
             </a>
             <a href="#dang-ky" className="nav-link">
               Phần IV • Đặt Lịch
@@ -140,18 +140,18 @@ export default function Home() {
               Phần I • Mở Đầu
             </a>
             <a
-              href="#dich-vu"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-2 text-sm uppercase tracking-wider text-[#ded8cb] hover:text-[#dfb755] border-b border-[rgba(207,163,57,0.15)] font-serif"
-            >
-              Phần II • Dịch Vụ
-            </a>
-            <a
               href="#bang-gia"
               onClick={() => setIsMobileMenuOpen(false)}
               className="block py-2 text-sm uppercase tracking-wider text-[#ded8cb] hover:text-[#dfb755] border-b border-[rgba(207,163,57,0.15)] font-serif"
             >
-              Phần III • Bảng Giá
+              Phần II • Bảng Giá
+            </a>
+            <a
+              href="#dich-vu"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block py-2 text-sm uppercase tracking-wider text-[#ded8cb] hover:text-[#dfb755] border-b border-[rgba(207,163,57,0.15)] font-serif"
+            >
+              Phần III • Dịch Vụ
             </a>
             <a
               href="#dang-ky"
@@ -308,236 +308,14 @@ export default function Home() {
       </div>
 
       {/* =========================================================================
-          PHẦN 2: PHẦN GIỚI THIỆU DỊCH VỤ (DRACONIC & KHÓA HỌC 7 NGÀY)
-          ========================================================================= */}
-      <section className="mystic-section relative z-10" id="dich-vu">
-        <div className="section-container">
-          {/* Section Head */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="section-eyebrow">
-              <Sparkles size={15} /> PHẦN II • DỊCH VỤ TRỌNG TÂM
-            </div>
-            <h2 className="section-title">
-              Không Gian Soi Chiếu{" "}
-              <span className="gold-gradient-text italic font-serif">Chuyên Sâu</span>
-            </h2>
-            <p className="section-desc mx-auto text-base sm:text-lg text-[#ded8cb]">
-              Hai hành trình chuyên sâu giúp bạn giải mã nghiệp quả tiền kiếp và tái thiết lập năng lượng bản thân cùng Freya.
-            </p>
-          </div>
-
-          {/* 2 Feature Cards Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 services-grid-2">
-            {/* Feature 1: Dịch Vụ Mới 2026 - Soi Tiền Kiếp Draconic */}
-            <div className="mystic-card service-col-1 p-8 sm:p-10 border border-[#dfb755]/50 bg-[#0c0b0e]/85 relative flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="gold-pill text-xs">
-                    <Flame size={13} className="text-[#dfb755]" /> DỊCH VỤ MỚI 2026
-                  </span>
-                  <div className="flex items-center gap-1 text-[#dfb755]">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={15} fill="#dfb755" />
-                    ))}
-                  </div>
-                </div>
-
-                <h3 className="text-3xl sm:text-4xl font-serif text-[#fff5db] mb-2 font-normal">
-                  Soi Tiền Kiếp Draconic
-                </h3>
-                <p className="text-xs sm:text-sm uppercase tracking-widest text-[#fae4b0] mb-5 font-serif font-semibold">
-                  Bản Đồ Sao Thiên Long • Giải Mã Ký Ức Linh Hồn
-                </p>
-
-                <p className="text-base text-[#ded8cb] font-serif leading-relaxed mb-6">
-                  Giải mã ký ức vô thức và căn duyên linh hồn qua 3 trọng tâm:
-                </p>
-
-                <div className="space-y-4 mb-6">
-                  <div className="bg-[#141215] border-l-2 border-[#dfb755] p-4">
-                    <h4 className="text-base sm:text-lg font-serif text-[#fae4b0] m-0 mb-1 flex items-center gap-2">
-                      <span>01.</span> Năng Lực & Nỗi Sợ Cũ
-                    </h4>
-                    <p className="text-sm sm:text-base text-[#ded8cb] font-serif m-0 leading-relaxed">
-                      Tài năng bẩm sinh và những nỗi sợ vô thức mang theo qua nhiều kiếp sống.
-                    </p>
-                  </div>
-
-                  <div className="bg-[#141215] border-l-2 border-[#dfb755] p-4">
-                    <h4 className="text-base sm:text-lg font-serif text-[#fae4b0] m-0 mb-1 flex items-center gap-2">
-                      <span>02.</span> Nghiệp Quả & Duyên Nợ
-                    </h4>
-                    <p className="text-sm sm:text-base text-[#ded8cb] font-serif m-0 leading-relaxed">
-                      Gút thắt tình cảm và những bài học dang dở đang tái hiện ở kiếp này.
-                    </p>
-                  </div>
-
-                  <div className="bg-[#141215] border-l-2 border-[#dfb755] p-4">
-                    <h4 className="text-base sm:text-lg font-serif text-[#fae4b0] m-0 mb-1 flex items-center gap-2">
-                      <span>03.</span> Khát Vọng Linh Hồn
-                    </h4>
-                    <p className="text-sm sm:text-base text-[#ded8cb] font-serif m-0 leading-relaxed">
-                      Sứ mệnh đích thực và tiếng gọi nội tâm sâu thẳm bên trong bạn.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="p-4 bg-[#080709] border border-[#dfb755]/30 rounded text-sm sm:text-base text-[#fae4b0] font-serif italic mb-6">
-                  ✦ Soi chiếu chuyên sâu qua Mặt Trăng & Thổ Tinh Draconic trùng tụ bản đồ sao gốc.
-                </div>
-              </div>
-
-              <div className="pt-5 border-t border-[rgba(207,163,57,0.2)] flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <span className="text-xs sm:text-sm text-[#9f9889] block font-serif">Mức phí dịch vụ:</span>
-                  <strong className="text-2xl font-serif text-[#dfb755]">650.000đ</strong>
-                  <span className="text-sm text-[#ded8cb] ml-1.5 font-serif">/ File + Call 1-1</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={() =>
-                      openPhotoModal(
-                        "/images/freya-draconic-pastlife.jpg",
-                        "Dịch Vụ Mới 2026: Soi Tiền Kiếp Draconic",
-                        "Hình ảnh giới thiệu dịch vụ soi tiền kiếp Draconic từ Freya Tarot"
-                      )
-                    }
-                    className="text-sm text-[#dfb755] hover:underline inline-flex items-center gap-1 font-serif"
-                  >
-                    Xem ảnh gốc <ExternalLink size={13} />
-                  </button>
-                  <button
-                    onClick={() =>
-                      handleSelectPackageAndScroll("Tử Vi - Gói Soi Tiền Kiếp Draconic (650.000đ)")
-                    }
-                    className="nav-btn-gold py-3 px-5 text-sm"
-                  >
-                    Chọn Gói Này
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Feature 2: 7 Ngày Chữa Lành */}
-            <div className="mystic-card service-col-2 p-8 sm:p-10 border border-[#dfb755]/50 bg-[#0c0b0e]/85 relative flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="gold-pill text-xs">
-                    <BookOpen size={13} className="text-[#dfb755]" /> CHƯƠNG TRÌNH ĐỘC QUYỀN
-                  </span>
-                  <div className="flex items-center gap-1 text-[#dfb755]">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={15} fill="#dfb755" />
-                    ))}
-                  </div>
-                </div>
-
-                <h3 className="text-3xl sm:text-4xl font-serif text-[#fff5db] mb-2 font-normal">
-                  7 Ngày Chữa Lành
-                </h3>
-                <p className="text-xs sm:text-sm uppercase tracking-widest text-[#fae4b0] mb-5 font-serif font-semibold">
-                  Khoá Học Bản Thân • Tái Thiết Lập Năng Lượng 1-1
-                </p>
-
-                <p className="text-base text-[#ded8cb] font-serif leading-relaxed mb-6">
-                  Hành trình 7 ngày liên tiếp giúp bạn chữa lành đứa trẻ bên trong và thấu hiểu chính mình:
-                </p>
-
-                <div className="space-y-4 mb-6">
-                  {[
-                    {
-                      title: "7 Ngày Đồng Hành 1-1",
-                      desc: "Chuyển hóa cảm xúc và duy trì trường năng lượng tích cực mỗi ngày.",
-                    },
-                    {
-                      title: "Đa Hệ Thống Chiêm Tinh",
-                      desc: "Thần số học, Bản đồ sao cá nhân, Draconic & Kỳ Trăng.",
-                    },
-                    {
-                      title: "Hồ Sơ Độc Bản Duy Nhất",
-                      desc: "Nghiên cứu và thiết lập chuyên biệt cho riêng bạn.",
-                    },
-                    {
-                      title: "Gỡ Rối Toàn Diện",
-                      desc: "Tháo gỡ nút thắt tâm lý, hoang mang sự nghiệp & tình cảm.",
-                    },
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-3">
-                      <div className="mt-1 w-4 h-4 rounded-full bg-[#dfb755]/20 border border-[#dfb755] flex items-center justify-center flex-shrink-0">
-                        <Check size={11} className="text-[#dfb755]" />
-                      </div>
-                      <div>
-                        <b className="text-base font-serif text-[#fff5db] block font-medium">
-                          {item.title}
-                        </b>
-                        <span className="text-sm sm:text-base text-[#ded8cb] font-serif">{item.desc}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 p-4 bg-[#080709] border border-[#dfb755]/30 rounded text-sm sm:text-base text-[#ded8cb] font-serif mb-6">
-                  <div>
-                    <span className="text-[#9f9889] block text-xs">Thời lượng:</span>
-                    <span className="text-[#fae4b0] font-medium">60 phút / buổi</span>
-                  </div>
-                  <div>
-                    <span className="text-[#9f9889] block text-xs">Hình thức:</span>
-                    <span className="text-[#fae4b0] font-medium">Online 1-1 riêng tư</span>
-                  </div>
-                  <div className="col-span-2 pt-2 border-t border-[#dfb755]/20">
-                    <span className="text-[#9f9889] block text-xs">Chuẩn bị:</span>
-                    <span className="text-[#fff5db]">Sổ ghi chép & không gian yên tĩnh</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-5 border-t border-[rgba(207,163,57,0.2)] flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <span className="text-xs sm:text-sm text-[#9f9889] block font-serif">Học phí trọn gói:</span>
-                  <strong className="text-2xl font-serif text-[#dfb755]">2.500.000đ</strong>
-                  <span className="text-sm text-[#ded8cb] ml-1.5 font-serif">/ 7 ngày</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={() =>
-                      openPhotoModal(
-                        "/images/freya-healing-course.jpg",
-                        "7 Ngày Chữa Lành - Khoá Học Về Bản Thân",
-                        "Hình ảnh giới thiệu khóa học 7 ngày chữa lành chuyên sâu từ Freya Tarot"
-                      )
-                    }
-                    className="text-sm text-[#dfb755] hover:underline inline-flex items-center gap-1 font-serif"
-                  >
-                    Xem ảnh gốc <ExternalLink size={13} />
-                  </button>
-                  <button
-                    onClick={() =>
-                      handleSelectPackageAndScroll(
-                        "Khóa học - 7 Ngày Chữa Lành Bản Thân (2.500.000đ)"
-                      )
-                    }
-                    className="nav-btn-gold py-3 px-5 text-sm"
-                  >
-                    Đăng Ký Khóa Học
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          PHẦN 3: BẢNG GIÁ CHI TIẾT CÁC GÓI ĐỌC TAROT (PRICING TABLE)
+          PHẦN 2: BẢNG GIÁ CHI TIẾT CÁC GÓI ĐỌC TAROT (PRICING TABLE)
           ========================================================================= */}
       <section className="mystic-section border-t border-[rgba(207,163,57,0.2)] relative z-10" id="bang-gia">
         <div className="section-container">
           {/* Section Head */}
-          {/* Section Head */}
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="section-eyebrow">
-              <Sparkles size={15} /> PHẦN III • BẢNG GIÁ NIÊM YẾT
+              <Sparkles size={15} /> PHẦN II • BẢNG GIÁ NIÊM YẾT
             </div>
             <h2 className="section-title">
               Bảng Giá Các Gói Xem{" "}
@@ -787,6 +565,227 @@ export default function Home() {
                 >
                   Chọn Gói Hồ Sơ Này
                 </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          PHẦN 3: PHẦN GIỚI THIỆU DỊCH VỤ (DRACONIC & KHÓA HỌC 7 NGÀY)
+          ========================================================================= */}
+      <section className="mystic-section border-t border-[rgba(207,163,57,0.2)] relative z-10" id="dich-vu">
+        <div className="section-container">
+          {/* Section Head */}
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="section-eyebrow">
+              <Sparkles size={15} /> PHẦN III • DỊCH VỤ TRỌNG TÂM
+            </div>
+            <h2 className="section-title">
+              Không Gian Soi Chiếu{" "}
+              <span className="gold-gradient-text italic font-serif">Chuyên Sâu</span>
+            </h2>
+            <p className="section-desc mx-auto text-base sm:text-lg text-[#ded8cb]">
+              Hai hành trình chuyên sâu giúp bạn giải mã nghiệp quả tiền kiếp và tái thiết lập năng lượng bản thân cùng Freya.
+            </p>
+          </div>
+
+          {/* 2 Feature Cards Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 services-grid-2">
+            {/* Feature 1: Dịch Vụ Mới 2026 - Soi Tiền Kiếp Draconic */}
+            <div className="mystic-card service-col-1 p-8 sm:p-10 border border-[#dfb755]/50 bg-[#0c0b0e]/85 relative flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="gold-pill text-xs">
+                    <Flame size={13} className="text-[#dfb755]" /> DỊCH VỤ MỚI 2026
+                  </span>
+                  <div className="flex items-center gap-1 text-[#dfb755]">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={15} fill="#dfb755" />
+                    ))}
+                  </div>
+                </div>
+
+                <h3 className="text-3xl sm:text-4xl font-serif text-[#fff5db] mb-2 font-normal">
+                  Soi Tiền Kiếp Draconic
+                </h3>
+                <p className="text-xs sm:text-sm uppercase tracking-widest text-[#fae4b0] mb-5 font-serif font-semibold">
+                  Bản Đồ Sao Thiên Long • Giải Mã Ký Ức Linh Hồn
+                </p>
+
+                <p className="text-base text-[#ded8cb] font-serif leading-relaxed mb-6">
+                  Giải mã ký ức vô thức và căn duyên linh hồn qua 3 trọng tâm:
+                </p>
+
+                <div className="space-y-4 mb-6">
+                  <div className="bg-[#141215] border-l-2 border-[#dfb755] p-4">
+                    <h4 className="text-base sm:text-lg font-serif text-[#fae4b0] m-0 mb-1 flex items-center gap-2">
+                      <span>01.</span> Năng Lực & Nỗi Sợ Cũ
+                    </h4>
+                    <p className="text-sm sm:text-base text-[#ded8cb] font-serif m-0 leading-relaxed">
+                      Tài năng bẩm sinh và những nỗi sợ vô thức mang theo qua nhiều kiếp sống.
+                    </p>
+                  </div>
+
+                  <div className="bg-[#141215] border-l-2 border-[#dfb755] p-4">
+                    <h4 className="text-base sm:text-lg font-serif text-[#fae4b0] m-0 mb-1 flex items-center gap-2">
+                      <span>02.</span> Nghiệp Quả & Duyên Nợ
+                    </h4>
+                    <p className="text-sm sm:text-base text-[#ded8cb] font-serif m-0 leading-relaxed">
+                      Gút thắt tình cảm và những bài học dang dở đang tái hiện ở kiếp này.
+                    </p>
+                  </div>
+
+                  <div className="bg-[#141215] border-l-2 border-[#dfb755] p-4">
+                    <h4 className="text-base sm:text-lg font-serif text-[#fae4b0] m-0 mb-1 flex items-center gap-2">
+                      <span>03.</span> Khát Vọng Linh Hồn
+                    </h4>
+                    <p className="text-sm sm:text-base text-[#ded8cb] font-serif m-0 leading-relaxed">
+                      Sứ mệnh đích thực và tiếng gọi nội tâm sâu thẳm bên trong bạn.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-[#080709] border border-[#dfb755]/30 rounded text-sm sm:text-base text-[#fae4b0] font-serif italic mb-6">
+                  ✦ Soi chiếu chuyên sâu qua Mặt Trăng & Thổ Tinh Draconic trùng tụ bản đồ sao gốc.
+                </div>
+              </div>
+
+              <div className="pt-5 border-t border-[rgba(207,163,57,0.2)] flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <span className="text-xs sm:text-sm text-[#9f9889] block font-serif">Mức phí dịch vụ:</span>
+                  <strong className="text-2xl font-serif text-[#dfb755]">650.000đ</strong>
+                  <span className="text-sm text-[#ded8cb] ml-1.5 font-serif">/ File + Call 1-1</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() =>
+                      openPhotoModal(
+                        "/images/freya-draconic-pastlife.jpg",
+                        "Dịch Vụ Mới 2026: Soi Tiền Kiếp Draconic",
+                        "Hình ảnh giới thiệu dịch vụ soi tiền kiếp Draconic từ Freya Tarot"
+                      )
+                    }
+                    className="text-sm text-[#dfb755] hover:underline inline-flex items-center gap-1 font-serif"
+                  >
+                    Xem ảnh gốc <ExternalLink size={13} />
+                  </button>
+                  <button
+                    onClick={() =>
+                      handleSelectPackageAndScroll("Tử Vi - Gói Soi Tiền Kiếp Draconic (650.000đ)")
+                    }
+                    className="nav-btn-gold py-3 px-5 text-sm"
+                  >
+                    Chọn Gói Này
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature 2: 7 Ngày Chữa Lành */}
+            <div className="mystic-card service-col-2 p-8 sm:p-10 border border-[#dfb755]/50 bg-[#0c0b0e]/85 relative flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="gold-pill text-xs">
+                    <BookOpen size={13} className="text-[#dfb755]" /> CHƯƠNG TRÌNH ĐỘC QUYỀN
+                  </span>
+                  <div className="flex items-center gap-1 text-[#dfb755]">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={15} fill="#dfb755" />
+                    ))}
+                  </div>
+                </div>
+
+                <h3 className="text-3xl sm:text-4xl font-serif text-[#fff5db] mb-2 font-normal">
+                  7 Ngày Chữa Lành
+                </h3>
+                <p className="text-xs sm:text-sm uppercase tracking-widest text-[#fae4b0] mb-5 font-serif font-semibold">
+                  Khoá Học Bản Thân • Tái Thiết Lập Năng Lượng 1-1
+                </p>
+
+                <p className="text-base text-[#ded8cb] font-serif leading-relaxed mb-6">
+                  Hành trình 7 ngày liên tiếp giúp bạn chữa lành đứa trẻ bên trong và thấu hiểu chính mình:
+                </p>
+
+                <div className="space-y-4 mb-6">
+                  {[
+                    {
+                      title: "7 Ngày Đồng Hành 1-1",
+                      desc: "Chuyển hóa cảm xúc và duy trì trường năng lượng tích cực mỗi ngày.",
+                    },
+                    {
+                      title: "Đa Hệ Thống Chiêm Tinh",
+                      desc: "Thần số học, Bản đồ sao cá nhân, Draconic & Kỳ Trăng.",
+                    },
+                    {
+                      title: "Hồ Sơ Độc Bản Duy Nhất",
+                      desc: "Nghiên cứu và thiết lập chuyên biệt cho riêng bạn.",
+                    },
+                    {
+                      title: "Gỡ Rối Toàn Diện",
+                      desc: "Tháo gỡ nút thắt tâm lý, hoang mang sự nghiệp & tình cảm.",
+                    },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-3">
+                      <div className="mt-1 w-4 h-4 rounded-full bg-[#dfb755]/20 border border-[#dfb755] flex items-center justify-center flex-shrink-0">
+                        <Check size={11} className="text-[#dfb755]" />
+                      </div>
+                      <div>
+                        <b className="text-base font-serif text-[#fff5db] block font-medium">
+                          {item.title}
+                        </b>
+                        <span className="text-sm sm:text-base text-[#ded8cb] font-serif">{item.desc}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 p-4 bg-[#080709] border border-[#dfb755]/30 rounded text-sm sm:text-base text-[#ded8cb] font-serif mb-6">
+                  <div>
+                    <span className="text-[#9f9889] block text-xs">Thời lượng:</span>
+                    <span className="text-[#fae4b0] font-medium">60 phút / buổi</span>
+                  </div>
+                  <div>
+                    <span className="text-[#9f9889] block text-xs">Hình thức:</span>
+                    <span className="text-[#fae4b0] font-medium">Online 1-1 riêng tư</span>
+                  </div>
+                  <div className="col-span-2 pt-2 border-t border-[#dfb755]/20">
+                    <span className="text-[#9f9889] block text-xs">Chuẩn bị:</span>
+                    <span className="text-[#fff5db]">Sổ ghi chép & không gian yên tĩnh</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-5 border-t border-[rgba(207,163,57,0.2)] flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <span className="text-xs sm:text-sm text-[#9f9889] block font-serif">Học phí trọn gói:</span>
+                  <strong className="text-2xl font-serif text-[#dfb755]">2.500.000đ</strong>
+                  <span className="text-sm text-[#ded8cb] ml-1.5 font-serif">/ 7 ngày</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() =>
+                      openPhotoModal(
+                        "/images/freya-healing-course.jpg",
+                        "7 Ngày Chữa Lành - Khoá Học Về Bản Thân",
+                        "Hình ảnh giới thiệu khóa học 7 ngày chữa lành chuyên sâu từ Freya Tarot"
+                      )
+                    }
+                    className="text-sm text-[#dfb755] hover:underline inline-flex items-center gap-1 font-serif"
+                  >
+                    Xem ảnh gốc <ExternalLink size={13} />
+                  </button>
+                  <button
+                    onClick={() =>
+                      handleSelectPackageAndScroll(
+                        "Khóa học - 7 Ngày Chữa Lành Bản Thân (2.500.000đ)"
+                      )
+                    }
+                    className="nav-btn-gold py-3 px-5 text-sm"
+                  >
+                    Đăng Ký Khóa Học
+                  </button>
+                </div>
               </div>
             </div>
           </div>
